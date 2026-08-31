@@ -12,20 +12,20 @@ pipeline {
 
         stage('Build Docker Images') {
             steps {
-                sh 'docker compose build'
+                sh 'docker compose -p mern_docker build'
             }
         }
 
         stage('Deploy Application') {
             steps {
-                sh 'docker compose down'
-                sh 'docker compose up -d'
+                sh 'docker compose -p mern_docker down'
+                sh 'docker compose -p mern_docker up -d'
             }
         }
 
         stage('Verify Deployment') {
             steps {
-                sh 'docker compose ps'
+                sh 'docker compose -p mern_docker ps'
             }
         }
     }
