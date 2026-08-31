@@ -3,13 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                    url: 'https://github.com/AmalkumarG/mern_docker.git'
-            }
-        }
-
         stage('Build Docker Images') {
             steps {
                 sh 'docker compose -p mern_docker build'
